@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement Instance;
+
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpStrength;
     [SerializeField] private Transform _facingDirection;
@@ -22,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+
         _rigidBody = GetComponent<Rigidbody>();
 
         Cursor.lockState = CursorLockMode.Locked;

@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectibleHealth : MonoBehaviour
+public class CollectibleHealth : MonoBehaviour, ICollectible
 {
     [SerializeField] private int _healthAmount = 20;
     [SerializeField] private AudioClip _healthPickupClip;
 
-    private void OnTriggerEnter(Collider other)
+    public void Collect()
     {
-        if(other.gameObject.TryGetComponent(out PlayerHealth playerHealth))
+        if(!PlayerMovement.Instance.TryGetComponent<PlayerHealth>(out var playerHealth))
         {
-            playerHealth.IncreaseHealth(_healthAmount);
-            AudioSource.PlayClipAtPoint(_healthPickupClip, transform.position);
-            Destroy(gameObject);
+            Debug.LogError("Player Health Not Found...", gameObject);
+            return;
         }
-    }
 
+        playerHealth.IncreaseHealth(_healthAmount);
+        AudioSource.PlayClipAtPoint(_healthPickupClip, transform.position);
+        Destroy(gameObject);
+    }
 }

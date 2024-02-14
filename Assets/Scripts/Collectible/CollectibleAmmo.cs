@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectibleAmmo : MonoBehaviour
+public class CollectibleAmmo : MonoBehaviour, ICollectible
 {
     [SerializeField] private int _ammoCount = 10;
     [SerializeField] private AudioClip _ammoPickupClip;
 
-    private void OnTriggerEnter(Collider other)
+    public void Collect()
     {
-        if(other.gameObject.TryGetComponent(out AmmoPouch ammoPouch))
+        if(!PlayerMovement.Instance.TryGetComponent<AmmoPouch>(out var ammoPouch))
         {
-            ammoPouch.IncreaseAmmoCount(_ammoCount);
-            AudioSource.PlayClipAtPoint(_ammoPickupClip, transform.position);
-            Destroy(gameObject);
+            Debug.LogError("Ammo Pouch Not Found...", gameObject);
+            return;
         }
+
+        ammoPouch.IncreaseAmmoCount(_ammoCount);
+        AudioSource.PlayClipAtPoint(_ammoPickupClip, transform.position);
+        Destroy(gameObject);
     }
 }

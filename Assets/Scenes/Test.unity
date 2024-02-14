@@ -278,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1093389074441855693, guid: bea5dcb5402439d49b8d9d6d59669cb8, type: 3}
       propertyPath: _lookSensitivity
-      value: 100
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 3816638295163914645, guid: bea5dcb5402439d49b8d9d6d59669cb8, type: 3}
       propertyPath: m_Enabled
@@ -292,6 +292,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8189426767494717399, guid: bea5dcb5402439d49b8d9d6d59669cb8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8a38d4caa93ad9d48a8f032b5b1cc333, type: 2}
     - target: {fileID: 8659886566644516487, guid: bea5dcb5402439d49b8d9d6d59669cb8, type: 3}
       propertyPath: _moveSpeed
       value: 450

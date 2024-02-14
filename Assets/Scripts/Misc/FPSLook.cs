@@ -6,7 +6,9 @@ public class FPSLook : MonoBehaviour
 {
     [SerializeField] private Transform _head;
     [SerializeField] private Transform _facingDirection;
-    [SerializeField] private float _rotationSpeed = 50f;
+    [SerializeField] private float _lookSensitivity = 50f;
+
+    //It is used to detect move direction
     private float _deltaRotationY;
 
     private void Update()
@@ -17,8 +19,8 @@ public class FPSLook : MonoBehaviour
 
     private void Look()
     {
-        _deltaRotationY = Input.GetAxisRaw("Mouse X") * Time.deltaTime * _rotationSpeed;
-        float deltaRotationX = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * _rotationSpeed;
+        _deltaRotationY = Input.GetAxisRaw("Mouse X") * Time.deltaTime * _lookSensitivity;
+        float deltaRotationX = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * _lookSensitivity;
 
         _head.rotation = Quaternion.Euler(
             _head.rotation.eulerAngles.x - deltaRotationX,
@@ -31,7 +33,7 @@ public class FPSLook : MonoBehaviour
     {
         _facingDirection.rotation = Quaternion.Euler(
             0f,
-            _facingDirection.rotation.eulerAngles.y + _deltaRotationY,
+            _head.rotation.eulerAngles.y,
             0f
         );
     }

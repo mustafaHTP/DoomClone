@@ -23,10 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody>();
-    }
 
-    private void Start()
-    {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

@@ -14,7 +14,7 @@ public class FPSLook : MonoBehaviour
     private void Update()
     {
         Look();
-        ApplyHorizontalRotationToBody();
+        SyncHeadRotationToFacingDirection();
     }
 
     private void Look()
@@ -29,7 +29,7 @@ public class FPSLook : MonoBehaviour
         );
     }
 
-    private void ApplyHorizontalRotationToBody()
+    private void SyncHeadRotationToFacingDirection()
     {
         _facingDirection.rotation = Quaternion.Euler(
             0f,

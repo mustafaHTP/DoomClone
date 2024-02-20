@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamagable
 {
-    public event Action OnDie;
-
-    private const int MinHealth = 0;
-
     [SerializeField] private int _maxHealth;
 
+    private const int MinHealth = 0;
+    private event Action OnDie;
     private int _currentHealth;
 
     public int MaxHealth => _maxHealth;
@@ -26,6 +24,8 @@ public class PlayerHealth : MonoBehaviour, IDamagable
             Die();
         }
     }
+
+    public bool HasMaxHealth() => _currentHealth == _maxHealth;
 
     public void IncreaseHealth(int healthAmount)
     {

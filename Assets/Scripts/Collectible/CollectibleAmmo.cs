@@ -15,6 +15,9 @@ public class CollectibleAmmo : MonoBehaviour, ICollectible
             return;
         }
 
+        //If ammo count is full, so don't take ammo
+        if (ammoPouch.IsAmmoAmountFull()) return;
+
         ammoPouch.IncreaseAmmoCount(_ammoCount);
         AudioSource.PlayClipAtPoint(_ammoPickupClip, transform.position);
         Destroy(gameObject);

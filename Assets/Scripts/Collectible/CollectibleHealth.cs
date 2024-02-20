@@ -15,6 +15,9 @@ public class CollectibleHealth : MonoBehaviour, ICollectible
             return;
         }
 
+        //If player has full health, don't collect health
+        if (playerHealth.HasMaxHealth()) return;
+
         playerHealth.IncreaseHealth(_healthAmount);
         AudioSource.PlayClipAtPoint(_healthPickupClip, transform.position);
         Destroy(gameObject);

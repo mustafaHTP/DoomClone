@@ -6,7 +6,7 @@ public class FPSCamera : MonoBehaviour
 {
     public static FPSCamera Instance;
 
-    [SerializeField] private GameObject _playerObject;
+    [SerializeField] private Transform _fpsCameraHolder;
 
     private void Awake()
     {
@@ -15,6 +15,6 @@ public class FPSCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.SetPositionAndRotation(_playerObject.transform.position, _playerObject.transform.rotation);
+        transform.SetPositionAndRotation(_fpsCameraHolder.position, _fpsCameraHolder.rotation);
     }
 }
